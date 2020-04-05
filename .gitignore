@@ -1,0 +1,24 @@
+*.swp
+
+.project
+.settings
+
+# Ignore Gradle project-specific cache directory
+.gradle
+
+# Ignore Gradle build output directory
+build/
+out/
+target/
+dependency-reduced-pom.xml
+
+# Ignore IntelliJ files
+.DS_Store
+*.iws
+*.ipr
+*.iml
+.idea
+.shelf
+
+# Ignore secretKeyRingFile
+secring.gpg
