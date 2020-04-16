@@ -1,5 +1,0 @@
-[
-  { "name":"jdk.jfr.internal.JVM", "methods":[
-    {"name":"getTypeId","parameterTypes":["java.lang.Class"] }
-  ]}
-]
