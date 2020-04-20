@@ -11,8 +11,24 @@ import java.time.LocalDateTime;
 import java.time.ZoneOffset;
 import java.util.Map;
 import java.util.function.Predicate;
+import java.util.logging.LogManager;
+import java.util.logging.Logger;
 
 public final class JFRFileParser {
+
+    // Configuring the logger like this just silently fails - no output is produced ...
+    private static final Logger logger = Logger.getLogger(JFRFileParser.class.getName());
+
+    // This does not work either - dies with an exception
+//    static {
+//        try {
+//            LogManager.getLogManager().readConfiguration(JFRFileParser.class.getResourceAsStream("/logging.properties"));
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//            System.exit(1);
+//        }
+//        logger = Logger.getLogger(JFRFileParser.class.getName());
+//    }
 
     private static final int SUMMARY_PERIOD = 60;
 
@@ -53,7 +69,7 @@ public final class JFRFileParser {
                                 summarizer.summarizeAndReset().forEach(metricBuffer::addMetric);
                                 lastSent = LocalDateTime.ofInstant(event.getStartTime(), ZoneOffset.UTC);
                                 count = count + 1;
-                                System.out.println("Summarizing a period...");
+                                logger.info("Summarizing a period...");
                             }
                         }
                     }
